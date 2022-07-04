@@ -1,21 +1,20 @@
 # CultureCenter-AppleMusicClone-CozyKyuRookie
 
-## git commit convention
-feat: A new feature 
+## Git Commit Convention
 
-fix: A bug fix 
+| Type     | Description                                                                   |
+|----------|-------------------------------------------------------------------------------|
+| feat     | A new feature                                                                 |
+| fix      | A bug fix                                                                     |
+| docs     | Changes to documentation                                                      |
+| style    | Formatting, missing semi colons, etc; no code change                          |
+| refactor | Refactoring production code                                                   |
+| test     | Adding tests, refactoring test; no production code change                     |
+| chore    | Updating build tasks, package manager configs, etc; no production code change |
 
-docs: Changes to documentation 
+### Reference
+[Udacity git convention](https://udacity.github.io/git-styleguide/)
 
-style: Formatting, missing semi colons, etc; no code change 
-
-refactor: Refactoring production code 
-
-test: Adding tests, refactoring test; no production code change 
-
-chore: Updating build tasks, package manager configs, etc; no production code change 
-
-
-### commit rule
-`#issue-number type: message`
+## Commit Rule
+`#issue-number [type]: [message]`
 
