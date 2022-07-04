@@ -51,6 +51,12 @@
 		790C4915287016D4001304C6 /* AppleMusicClone */ = {
 			isa = PBXGroup;
 			children = (
+				79339831287326D0007584EC /* Extensions */,
+				79339830287326CA007584EC /* Utils */,
+				7933982F287326BF007584EC /* Services */,
+				7933982E287326B8007584EC /* Models */,
+				7933982D287326B0007584EC /* ViewModels */,
+				7933982C287326AB007584EC /* Views */,
 				790C4916287016D4001304C6 /* AppleMusicCloneApp.swift */,
 				790C4918287016D4001304C6 /* ContentView.swift */,
 				790C491A287016D6001304C6 /* Assets.xcassets */,
@@ -65,6 +71,48 @@
 				790C491D287016D6001304C6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7933982C287326AB007584EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7933982D287326B0007584EC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7933982E287326B8007584EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7933982F287326BF007584EC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		79339830287326CA007584EC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		79339831287326D0007584EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
