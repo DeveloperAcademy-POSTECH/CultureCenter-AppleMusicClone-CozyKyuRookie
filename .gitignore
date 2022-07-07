@@ -33,7 +33,9 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+
 Secret.swift
+
 ### Swift ###
 # Xcode
 #
