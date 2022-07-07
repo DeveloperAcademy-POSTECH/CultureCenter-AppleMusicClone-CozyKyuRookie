@@ -7,68 +7,67 @@
 
 import Foundation
 
-struct Welcome3: Codable {
-    let results: Results3
+struct Artist: Codable {
+    let results: ArtistResult
 }
 
-extension Welcome3 {
-    static func placeholder() -> Welcome3 {
-        Welcome3(results: Results3(suggestions: [Suggestion3(kind: "", content: Content3(id: "", type: "", href: "", attributes: Attributes3(name: "artist은 없다", genreNames: [""], artwork: Artwork3(width: 3, height: 3, url: "", bgColor: "", textColor1: "", textColor2: "", textColor3: "", textColor4: ""), url: ""), relationships: Relationships3(albums: Albums3(href: "", next: "", data: [Datum3(id: "", type: TypeEnum3.albums, href: "")]))))]))
+extension Artist {
+    static func placeholder() -> Artist {
+        Artist(results: ArtistResult(suggestions: [ArtistSuggestion(kind: "", content: ArtistContent(id: "", type: "", href: "", attributes: ArtistAttributes(name: "artist은 없다", genreNames: [""], artwork: ArtistArtwork(width: 3, height: 3, url: "", bgColor: "", textColor1: "", textColor2: "", textColor3: "", textColor4: ""), url: ""), relationships: ArtistRelationships(albums: ArtistAlbums(href: "", next: "", data: [ArtistData(id: "", type: ArtistType.albums, href: "")]))))]))
     }
 }
 // MARK: - Results
-struct Results3: Codable {
-    let suggestions: [Suggestion3]
+struct ArtistResult: Codable {
+    let suggestions: [ArtistSuggestion]
 }
 
 // MARK: - Suggestion
-struct Suggestion3: Codable {
+struct ArtistSuggestion: Codable {
     let kind: String
-    let content: Content3
+    let content: ArtistContent
 }
 
 // MARK: - Content
-struct Content3: Codable {
+struct ArtistContent: Codable {
     let id, type, href: String
-    let attributes: Attributes3
-    let relationships: Relationships3
+    let attributes: ArtistAttributes
+    let relationships: ArtistRelationships
 }
 
 // MARK: - Attributes
-struct Attributes3: Codable {
+struct ArtistAttributes: Codable {
     let name: String
     let genreNames: [String]
-    let artwork: Artwork3
+    let artwork: ArtistArtwork
     let url: String
 }
 
 // MARK: - Artwork
-struct Artwork3: Codable {
+struct ArtistArtwork: Codable {
     let width, height: Int
     let url, bgColor, textColor1, textColor2: String
     let textColor3, textColor4: String
 }
 
 // MARK: - Relationships
-struct Relationships3: Codable {
-    let albums: Albums3
+struct ArtistRelationships: Codable {
+    let albums: ArtistAlbums
 }
 
 // MARK: - Albums
-struct Albums3: Codable {
+struct ArtistAlbums: Codable {
     let href: String
     let next: String?
-    // optional 안하면 안나옴
-    let data: [Datum3]
+    let data: [ArtistData]
 }
 
 // MARK: - Datum
-struct Datum3: Codable {
+struct ArtistData: Codable {
     let id: String
-    let type: TypeEnum3
+    let type: ArtistType
     let href: String
 }
 
-enum TypeEnum3: String, Codable {
+enum ArtistType: String, Codable {
     case albums = "albums"
 }

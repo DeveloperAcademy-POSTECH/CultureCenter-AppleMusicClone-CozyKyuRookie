@@ -7,35 +7,36 @@
 
 import Foundation
 
-struct Welcome2: Codable {
-    let results: Results2
+struct Song: Codable {
+    let results: SongResult
 }
 
-extension Welcome2 {
-    static func placeholder() -> Welcome2 {
-        return Welcome2(results: Results2(suggestions: [Suggestion2(kind: "", content: Content2(id: "", type: "", href: "", attributes: Attributes2(previews: [Preview2(url: "")], artwork: Artwork2(width: 1, height: 1, url: "", bgColor: "", textColor1: "", textColor2: "", textColor3: "", textColor4: ""), artistName: "", url: "", discNumber: 3, genreNames: [""], durationInMillis: 3, releaseDate: "", isAppleDigitalMaster: false, name: "song은 없다", isrc: "", hasLyrics: false, albumName: "", playParams: PlayParams2(id: "", kind: ""), trackNumber: 3, composerName: "")))]))
+extension Song {
+    static func placeholder() -> Song {
+        return Song(results: SongResult(suggestions: [SongSuggestion(kind: "", content: SongContent(id: "", type: "", href: "", attributes: SongAttributes(previews: [Preview2(url: "")], artwork: Artwork2(width: 1, height: 1, url: "", bgColor: "", textColor1: "", textColor2: "", textColor3: "", textColor4: ""), artistName: "", url: "", discNumber: 3, genreNames: [""], durationInMillis: 3, releaseDate: "", isAppleDigitalMaster: false, name: "song은 없다", isrc: "", hasLyrics: false, albumName: "", playParams: PlayParams2(id: "", kind: ""), trackNumber: 3, composerName: "")))]))
     }
 }
 
 // MARK: - Results
-struct Results2: Codable {
-    let suggestions: [Suggestion2]
+struct SongResult: Codable {
+    let suggestions: [SongSuggestion]
 }
 
 // MARK: - Suggestion
-struct Suggestion2: Codable {
+struct SongSuggestion: Codable {
     let kind: String
-    let content: Content2
+    let content: SongContent
 }
 
+
 // MARK: - Content
-struct Content2: Codable {
+struct SongContent: Codable {
     let id, type, href: String
-    let attributes: Attributes2
+    let attributes: SongAttributes
 }
 
 // MARK: - Attributes
-struct Attributes2: Codable {
+struct SongAttributes: Codable {
     let previews: [Preview2]
     let artwork: Artwork2
     let artistName: String

@@ -7,58 +7,58 @@
 
 import Foundation
 
-extension Welcome4 {
-    static func placeholder() -> Welcome4 {
-        Welcome4(results: Results4(suggestions: [Suggestion4(kind: "", content: Content4(id: "", type: "", href: "", attributes: Attributes4(playParams: PlayParams4(id: "", kind: "", versionHash: ""), url: "", isChart: false, curatorName: "", artwork: Artwork4(width: 3, height: 3, url: "", bgColor: "", textColor1: "", textColor2: "", textColor3: "", textColor4: ""), playlistType: "", name: "playlist은 없다", lastModifiedDate: "Date()",description: nil)))]))
+extension Playlist {
+    static func placeholder() -> Playlist {
+        Playlist(results: PlaylistResult(suggestions: [PlaylistSuggestion(kind: "", content: PlaylistContent(id: "", type: "", href: "", attributes: PlaylistAttribute(playParams: PlayParams(id: "", kind: "", versionHash: ""), url: "", isChart: false, curatorName: "", artwork: PlaylistArtwork(width: 3, height: 3, url: "", bgColor: "", textColor1: "", textColor2: "", textColor3: "", textColor4: ""), playlistType: "", name: "playlist은 없다", lastModifiedDate: "Date()",description: nil)))]))
     }
 }
 
 // MARK: - Welcome
-struct Welcome4: Codable {
-    let results: Results4
+struct Playlist: Codable {
+    let results: PlaylistResult
 }
 
 // MARK: - Results
-struct Results4: Codable {
-    let suggestions: [Suggestion4]
+struct PlaylistResult: Codable {
+    let suggestions: [PlaylistSuggestion]
 }
 
 // MARK: - Suggestion
-struct Suggestion4: Codable {
+struct PlaylistSuggestion: Codable {
     let kind: String
-    let content: Content4
+    let content: PlaylistContent
 }
 
 // MARK: - Content
-struct Content4: Codable {
+struct PlaylistContent: Codable {
     let id, type, href: String
-    let attributes: Attributes4
+    let attributes: PlaylistAttribute
 }
 
 // MARK: - Attributes
-struct Attributes4: Codable {
-    let playParams: PlayParams4
+struct PlaylistAttribute: Codable {
+    let playParams: PlayParams
     let url: String
     let isChart: Bool
     let curatorName: String
-    let artwork: Artwork4
+    let artwork: PlaylistArtwork
     let playlistType, name: String
     let lastModifiedDate: String// quick type 상으로는 Date 인데 실제로 string이므로 출력안되었었다.
-    let description: Description?
+    let description: PlaylistDescription?
 }
 
 // MARK: - Artwork
-struct Artwork4: Codable {
+struct PlaylistArtwork: Codable {
     let width, height: Int
     let url, bgColor, textColor1, textColor2: String
     let textColor3, textColor4: String
 }
 
 // MARK: - PlayParams
-struct PlayParams4: Codable {
+struct PlayParams: Codable {
     let id, kind, versionHash: String
 }
 
-struct Description: Codable {
+struct PlaylistDescription: Codable {
     let standard, short: String
 }

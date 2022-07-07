@@ -8,21 +8,21 @@
 import Foundation
 
 // MARK: - Welcome
-struct WelcomeHints: Codable {
-    let results: ResultsHints
+struct Hint: Codable {
+    let results: HintResult
 }
-extension WelcomeHints {
-    static func placeholder() ->  WelcomeHints {
-        WelcomeHints(results: ResultsHints(suggestions: [SuggestionHints(kind: "", searchTerm: "", displayTerm: "")]))
+extension Hint {
+    static func placeholder() ->  Hint {
+        Hint(results: HintResult(suggestions: [HintSuggestion(kind: "", searchTerm: "", displayTerm: "")]))
     }
 }
 
 // MARK: - Results
-struct ResultsHints: Codable {
-    let suggestions: [SuggestionHints]
+struct HintResult: Codable {
+    let suggestions: [HintSuggestion]
 }
 
 // MARK: - Suggestion
-struct SuggestionHints: Codable {
+struct HintSuggestion: Codable {
     let kind, searchTerm, displayTerm: String
 }
