@@ -34,13 +34,13 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
-Secret.swift
+
 
 ### Swift ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
+Secret.swift
 ## User settings
 xcuserdata/
 
