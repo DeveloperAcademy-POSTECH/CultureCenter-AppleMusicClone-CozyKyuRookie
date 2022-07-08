@@ -10,7 +10,7 @@ import AVFoundation
 
 struct SongRow: View {
     
-    @StateObject var searchVM: SearchViewModel
+    @StateObject var searchViewModel: SearchViewModel
     @State var audioPlayer: AVPlayer!
     @State var isPlaying: Bool = false
     @State var previousURL: URL?
@@ -18,13 +18,13 @@ struct SongRow: View {
     var body: some View {
         
         LazyVStack {
-            ForEach(searchVM.songs.indices, id: \.self) { index in
+            ForEach(searchViewModel.songs.indices, id: \.self) { index in
                 Button {
-                    guard let url = searchVM.songs[index].songUrl else { return }
+                    guard let url = searchViewModel.songs[index].songUrl else { return }
                     previousURL = toggleSong(url: url, willChangeSong: previousURL == nil || previousURL != url)
                 } label: {
                     HStack {
-                        AsyncImage(url:searchVM.songs[index].imageUrl) { image in
+                        AsyncImage(url:searchViewModel.songs[index].imageUrl) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -32,7 +32,7 @@ struct SongRow: View {
                             RoundedRectangle(cornerRadius: 5)
                         }
                         .frame(width: 50, height: 50)
-                        Text(searchVM.songs[index].inform)
+                        Text(searchViewModel.songs[index].inform)
                             .foregroundColor(.primary)
                         Spacer()
                     }
