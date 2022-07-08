@@ -7,13 +7,14 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Hint: Codable {
+// MARK: - Hint
+struct HintResponse: Codable {
     let results: HintResult
 }
-extension Hint {
-    static func placeholder() ->  Hint {
-        Hint(results: HintResult(suggestions: [HintSuggestion(kind: "", searchTerm: "", displayTerm: "")]))
+
+extension HintResponse {
+    static func placeholder() ->  HintResponse {
+        HintResponse(results: HintResult(suggestions: [HintSuggestion(displayTerm: "")]))
     }
 }
 
@@ -24,5 +25,5 @@ struct HintResult: Codable {
 
 // MARK: - Suggestion
 struct HintSuggestion: Codable {
-    let kind, searchTerm, displayTerm: String
+    let displayTerm: String
 }

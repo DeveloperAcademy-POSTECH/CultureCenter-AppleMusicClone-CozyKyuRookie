@@ -21,28 +21,28 @@ class SearchViewModel: ObservableObject {
     @Published var songs: [commonViewModel<SongSuggestion>] = []
     
     func fetch(_ text: String) {
-        HintsCancellable = WebService.searchTask(resource: Resource<Hint>(urlString: getHintsUrlString(text)))
-            .catch { _ in Just(Hint.placeholder())}
-            .sink(receiveValue: { hints in
-                self.hints = hints.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
+        HintsCancellable = WebService.searchTask(resource: Resource<HintResponse>(urlString: getHintsUrlString(text)))
+            .catch { _ in Just(HintResponse.placeholder())}
+            .sink(receiveValue: { hintResponse in
+                self.hints = hintResponse.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
             })
         
-        SongsCancellable = WebService.searchTask(resource: Resource<Song>(urlString: getSongsUrlString(text)))
-            .catch { _ in Just(Song.placeholder())}
-            .sink(receiveValue: { songs in
-                self.songs = songs.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
+        SongsCancellable = WebService.searchTask(resource: Resource<SongResponse>(urlString: getSongsUrlString(text)))
+            .catch { _ in Just(SongResponse.placeholder())}
+            .sink(receiveValue: { songResponse in
+                self.songs = songResponse.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
             })
         
-        ArtistsCancellable = WebService.searchTask(resource: Resource<Artist>(urlString: getArtistsUrlString(text)))
-            .catch { _ in Just(Artist.placeholder())}
-            .sink(receiveValue: { artists in
-                self.artists = artists.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
+        ArtistsCancellable = WebService.searchTask(resource: Resource<ArtistResponse>(urlString: getArtistsUrlString(text)))
+            .catch { _ in Just(ArtistResponse.placeholder())}
+            .sink(receiveValue: { artistResponse in
+                self.artists = artistResponse.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
             })
         
-        PlaylistsCancellable = WebService.searchTask(resource: Resource<Playlist>(urlString: getPlaylistsUrlString(text)))
-            .catch { _ in Just(Playlist.placeholder())}
-            .sink(receiveValue: { playlists in
-                self.playlists = playlists.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
+        PlaylistsCancellable = WebService.searchTask(resource: Resource<PlaylistResponse>(urlString: getPlaylistsUrlString(text)))
+            .catch { _ in Just(PlaylistResponse.placeholder())}
+            .sink(receiveValue: { playlistResponse in
+                self.playlists = playlistResponse.results.suggestions.map{ commonViewModel.init(suggestion: $0)}
             })
     }
 }

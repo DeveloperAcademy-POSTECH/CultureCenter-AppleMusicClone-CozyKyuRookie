@@ -22,7 +22,6 @@ struct WebService {
         guard let url = URL(string: encodedString) else {
             fatalError("Invalid URL")
         }
-        
         var fetchRequest = URLRequest(url: url)
         fetchRequest.addValue("Bearer \(Secret.token)", forHTTPHeaderField: "Authorization")
         return URLSession.shared.dataTaskPublisher(for: fetchRequest)
