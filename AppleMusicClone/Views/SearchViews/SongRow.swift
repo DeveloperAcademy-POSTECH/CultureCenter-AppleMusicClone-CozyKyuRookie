@@ -6,29 +6,58 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct SongRow: View {
     
     @StateObject var searchVM: SearchViewModel
+    @State var audioPlayer: AVPlayer!
+    @State var isPlaying: Bool = false
+    @State var previousURL: URL?
     
     var body: some View {
         
         LazyVStack {
             ForEach(searchVM.songs.indices, id: \.self) { index in
-                HStack {
-                    AsyncImage(url:searchVM.songs[index].imageUrl) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        RoundedRectangle(cornerRadius: 5)
+                Button {
+                    guard let url = searchVM.songs[index].songUrl else { return }
+                    previousURL = toggleSong(url: url, willChangeSong: previousURL == nil || previousURL != url)
+                } label: {
+                    HStack {
+                        AsyncImage(url:searchVM.songs[index].imageUrl) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            RoundedRectangle(cornerRadius: 5)
+                        }
+                        .frame(width: 50, height: 50)
+                        Text(searchVM.songs[index].inform)
+                            .foregroundColor(.primary)
+                        Spacer()
                     }
-                    .frame(width: 50, height: 50)
-                    Text(searchVM.songs[index].inform)
-                    Spacer()
+                    
                 }
             }
         }
         
+    }
+}
+
+extension SongRow {
+    private func toggleSong(url: URL, willChangeSong: Bool) -> URL? {
+        if willChangeSong {
+            let item = AVPlayerItem(url: url)
+            let player = AVPlayer(playerItem: item)
+            self.audioPlayer = player
+            self.isPlaying = false
+        }
+        self.isPlaying.toggle()
+        if self.isPlaying {
+            self.audioPlayer.play()
+        } else {
+            self.audioPlayer.pause()
+        }
+        return url
     }
 }
