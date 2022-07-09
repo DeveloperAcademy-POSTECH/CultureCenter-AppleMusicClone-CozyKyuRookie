@@ -10,7 +10,7 @@ import AVFoundation
 
 struct SongRow: View {
     
-    @StateObject var searchViewModel: SearchViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
     @State private var audioPlayer: AVPlayer!
     @State private var isPlaying: Bool = false
     @State private var previousURL: URL?
@@ -40,7 +40,6 @@ struct SongRow: View {
                 }
             }
         }
-        
     }
 }
 

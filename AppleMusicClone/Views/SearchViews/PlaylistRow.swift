@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaylistRow: View {
     
-    @StateObject var searchViewModel: SearchViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
     
     var body: some View {
         
