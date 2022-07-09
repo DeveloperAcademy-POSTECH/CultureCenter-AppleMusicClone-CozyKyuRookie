@@ -26,8 +26,8 @@ struct MainView: View {
 
             Text("3")
                 .tabItem {
-                    Image(systemName: "play.circle.fill")
-                    Text("지금 듣기")
+                    Image(systemName: "folder")
+                    Text("보관함")
                 }
 
             Text("4")
