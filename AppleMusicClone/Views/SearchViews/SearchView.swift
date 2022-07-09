@@ -14,27 +14,31 @@ struct SearchView: View {
     @State private var category: searchCategory = .appleMusic
     @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     
+    
     var body: some View {
         
-        VStack(spacing: 10) {
-            ///TODO: 커스텀 텍스트 필드
-            TextField("Your Location", text: $location)
-                .padding()
-                .onChange(of: location) { _ in
-                    searchViewModel.fetch(location)
+        NavigationView {
+            VStack(spacing: 10) {
+                ///TODO: 커스텀 텍스트 필드
+                SearchBar(text: $location, content: {})
+                    .frame(height: 0)
+                    .padding()
+                    .onChange(of: location) { _ in
+                        searchViewModel.fetch(location)
+                    }
+                if location.count > 0 {
+                    ScrollView(.vertical) {
+                        HintRow(searchViewModel: searchViewModel)
+                        SongRow(searchViewModel: searchViewModel)
+                        PlaylistRow(searchViewModel: searchViewModel)
+                        ArtistRow(searchViewModel: searchViewModel)
+                    }
+                    Spacer()
                 }
-            
-            searchPicker()
-            
-            ScrollView(.vertical) {
-                HintRow(searchViewModel: searchViewModel)
-                SongRow(searchViewModel: searchViewModel)
-                PlaylistRow(searchViewModel: searchViewModel)
-                ArtistRow(searchViewModel: searchViewModel)
             }
-            Spacer()
+            .padding(.horizontal, 20)
+            .navigationTitle("검색")
         }
-        .padding(.horizontal, 20)
     }
 }
 
