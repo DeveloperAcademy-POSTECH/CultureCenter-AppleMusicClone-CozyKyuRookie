@@ -11,9 +11,9 @@ import AVFoundation
 struct SongRow: View {
     
     @StateObject var searchViewModel: SearchViewModel
-    @State var audioPlayer: AVPlayer!
-    @State var isPlaying: Bool = false
-    @State var previousURL: URL?
+    @State private var audioPlayer: AVPlayer!
+    @State private var isPlaying: Bool = false
+    @State private var previousURL: URL?
     
     var body: some View {
         
@@ -21,7 +21,7 @@ struct SongRow: View {
             ForEach(searchViewModel.songs.indices, id: \.self) { index in
                 Button {
                     guard let url = searchViewModel.songs[index].songUrl else { return }
-                    previousURL = toggleSong(url: url, willChangeSong: previousURL == nil || previousURL != url)
+                    previousURL = toggleSong(url: url, isDifferentSong: previousURL == nil || previousURL != url)
                 } label: {
                     HStack {
                         AsyncImage(url:searchViewModel.songs[index].imageUrl) { image in
@@ -45,8 +45,8 @@ struct SongRow: View {
 }
 
 extension SongRow {
-    private func toggleSong(url: URL, willChangeSong: Bool) -> URL? {
-        if willChangeSong {
+    private func toggleSong(url: URL, isDifferentSong: Bool) -> URL {
+        if isDifferentSong {
             let item = AVPlayerItem(url: url)
             let player = AVPlayer(playerItem: item)
             self.audioPlayer = player
