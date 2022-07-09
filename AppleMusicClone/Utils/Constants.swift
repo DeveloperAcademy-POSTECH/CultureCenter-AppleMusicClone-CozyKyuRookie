@@ -13,11 +13,9 @@ import Foundation
 struct Constants {
     
     struct Urls {
-         
-        static func getSuggestionTemrs(text: String) -> String {
+        static func getSuggestionTerms(text: String) -> String {
             "https://api.music.apple.com/v1/catalog/kr/search/suggestions?term=\(text)&kinds=terms"
-            
         }
-        
     }
 }
+
