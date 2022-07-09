@@ -11,7 +11,7 @@
 		790C4919287016D4001304C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C4918287016D4001304C6 /* ContentView.swift */; };
 		790C491B287016D6001304C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790C491A287016D6001304C6 /* Assets.xcassets */; };
 		790C491E287016D6001304C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790C491D287016D6001304C6 /* Preview Assets.xcassets */; };
-		790FC5B32874183600B26D20 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC5B22874183600B26D20 /* Webservice.swift */; };
+		790FC5B32874183600B26D20 /* MediaSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC5B22874183600B26D20 /* MediaSearchService.swift */; };
 		790FC5B82874184000B26D20 /* PlaylistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC5B42874184000B26D20 /* PlaylistResponse.swift */; };
 		790FC5B92874184000B26D20 /* SongResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC5B52874184000B26D20 /* SongResponse.swift */; };
 		790FC5BA2874184000B26D20 /* ArtistResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC5B62874184000B26D20 /* ArtistResponse.swift */; };
@@ -35,7 +35,7 @@
 		790C4918287016D4001304C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		790C491A287016D6001304C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		790C491D287016D6001304C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		790FC5B22874183600B26D20 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		790FC5B22874183600B26D20 /* MediaSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSearchService.swift; sourceTree = "<group>"; };
 		790FC5B42874184000B26D20 /* PlaylistResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistResponse.swift; sourceTree = "<group>"; };
 		790FC5B52874184000B26D20 /* SongResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongResponse.swift; sourceTree = "<group>"; };
 		790FC5B62874184000B26D20 /* ArtistResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistResponse.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		7933982F287326BF007584EC /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				790FC5B22874183600B26D20 /* Webservice.swift */,
+				790FC5B22874183600B26D20 /* MediaSearchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 				790FC5C82875AD0700B26D20 /* MainView.swift in Sources */,
 				7933983828732D92007584EC /* Constants.swift in Sources */,
 				790C4919287016D4001304C6 /* ContentView.swift in Sources */,
-				790FC5B32874183600B26D20 /* Webservice.swift in Sources */,
+				790FC5B32874183600B26D20 /* MediaSearchService.swift in Sources */,
 				7949F5E92876F98B00AAEFD4 /* PlaylistRow.swift in Sources */,
 				7949F5ED2877214300AAEFD4 /* Secret.swift in Sources */,
 				790FC5BA2874184000B26D20 /* ArtistResponse.swift in Sources */,

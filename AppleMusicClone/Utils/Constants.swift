@@ -12,7 +12,7 @@ import Foundation
 
 struct Constants {
     
-    struct Urls {
+    struct URLSet {
         static func getSuggestionTerms(text: String) -> String {
             "https://api.music.apple.com/v1/catalog/kr/search/suggestions?term=\(text)&kinds=terms"
         }

@@ -27,10 +27,10 @@ struct SearchView: View {
             searchPicker()
             
             ScrollView(.vertical) {
-                HintRow(searchVM: searchViewModel)
-                SongRow(searchVM: searchViewModel)
-                PlaylistRow(searchVM: searchViewModel)
-                ArtistRow(searchVM: searchViewModel)
+                HintRow(searchViewModel: searchViewModel)
+                SongRow(searchViewModel: searchViewModel)
+                PlaylistRow(searchViewModel: searchViewModel)
+                ArtistRow(searchViewModel: searchViewModel)
             }
             Spacer()
         }

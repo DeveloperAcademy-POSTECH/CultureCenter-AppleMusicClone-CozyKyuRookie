@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SongRow: View {
     
-    @StateObject var searchVM: SearchViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
     
     var body: some View {
         
         LazyVStack {
-            ForEach(searchVM.songs.indices, id: \.self) { index in
+            ForEach(searchViewModel.songs.indices, id: \.self) { index in
                 HStack {
-                    AsyncImage(url:searchVM.songs[index].imageUrl) { image in
+                    AsyncImage(url:searchViewModel.songs[index].imageUrl) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -24,7 +24,7 @@ struct SongRow: View {
                         RoundedRectangle(cornerRadius: 5)
                     }
                     .frame(width: 50, height: 50)
-                    Text(searchVM.songs[index].inform)
+                    Text(searchViewModel.songs[index].inform)
                     Spacer()
                 }
             }
