@@ -20,7 +20,8 @@ struct ArtistRow: View {
                                 searchViewModel.artists[index].imageUrl) { image in
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
                     } placeholder: {
                         RoundedRectangle(cornerRadius: 5)
                     }
@@ -30,7 +31,6 @@ struct ArtistRow: View {
                 }
             }
         }
-        
     }
 }
 
