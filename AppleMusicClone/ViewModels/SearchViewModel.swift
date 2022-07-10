@@ -73,6 +73,7 @@ struct commonViewModel<Thema> {
     let suggestion: Thema
     let inform: String
     var imageUrl: URL?
+    var songUrl: URL?
     
     init(suggestion: Thema) {
         self.suggestion = suggestion
@@ -82,10 +83,11 @@ struct commonViewModel<Thema> {
         case let songs as SongSuggestion:
             inform = songs.content.attributes.name
             imageUrl = getImageUrl(urlString: songs.content.attributes.artwork.url)
+            guard let url = songs.content.attributes.previews.first?.url else { return }
+            songUrl = URL(string: url)            
         case let artist as ArtistSuggestion:
             inform = artist.content.attributes.name
-            imageUrl = getImageUrl(urlString: artist.content.attributes.artwork.url)
-            
+            imageUrl = getImageUrl(urlString: artist.content.attributes.artwork.url)            
         case let playlist as PlaylistSuggestion:
             inform = playlist.content.attributes.name
             imageUrl = getImageUrl(urlString: playlist.content.attributes.artwork.url)

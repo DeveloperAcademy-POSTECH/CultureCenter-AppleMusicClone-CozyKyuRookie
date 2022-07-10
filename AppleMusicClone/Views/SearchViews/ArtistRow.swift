@@ -21,7 +21,6 @@ struct ArtistRow: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            
                     } placeholder: {
                         RoundedRectangle(cornerRadius: 5)
                     }
