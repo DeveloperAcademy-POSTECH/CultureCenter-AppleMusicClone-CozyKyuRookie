@@ -35,28 +35,28 @@ struct MediaSearchService: Webservice {
     }
 }
 
-struct FakeSearchService: Webservice {
-    static func searchTask<Thema>(resource: Resource<Thema>) -> AnyPublisher<Thema, Error> where Thema : Codable {
-        
-        switch Thema.self {
-        case _ as HintResponse.Type:
-            return Just(HintResponse(results: HintResult(suggestions: [HintSuggestion(displayTerm: "아에이오우")])))
-                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
-        case _ as SongResponse.Type:
-            return Just(SongResponse(results: SongResult(suggestions: [SongSuggestion(content: SongContent(attributes: SongAttributes(artwork: SongArtWork(url: "asdvsdv"), name: "xbfbadfb")))])))
-                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
-        case _ as ArtistResponse.Type:
-            return Just(ArtistResponse(results: ArtistResult(suggestions: [ArtistSuggestion(content: ArtistContent(attributes: ArtistAttributes(name: "asdvasdv", artwork: ArtistArtwork(url: "sdad"))))])))
-                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
-        case _ as PlaylistResponse.Type:
-            return Just(PlaylistResponse(results: PlaylistResult(suggestions: [PlaylistSuggestion(content: PlaylistContent(attributes: PlaylistAttribute(artwork: PlaylistArtwork(url: ""), name: "asdvasdv")))])))
-                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
-        default :
-            return Just(HintResponse(results: HintResult(suggestions: [HintSuggestion(displayTerm: "아에이오우")])))
-                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
-        }
-    }
-    
-    
-}
+//struct FakeSearchService: Webservice {
+//    static func searchTask<Thema>(resource: Resource<Thema>) -> AnyPublisher<Thema, Error> where Thema : Codable {
+//        
+//        switch Thema.self {
+//        case _ as HintResponse.Type:
+//            return Just(HintResponse(results: HintResult(suggestions: [HintSuggestion(displayTerm: "아에이오우")])))
+//                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
+//        case _ as SongResponse.Type:
+//            return Just(SongResponse(results: SongResult(suggestions: [SongSuggestion(content: SongContent(attributes: SongAttributes(artwork: SongArtWork(url: "asdvsdv"), name: "xbfbadfb")))])))
+//                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
+//        case _ as ArtistResponse.Type:
+//            return Just(ArtistResponse(results: ArtistResult(suggestions: [ArtistSuggestion(content: ArtistContent(attributes: ArtistAttributes(name: "asdvasdv", artwork: ArtistArtwork(url: "sdad"))))])))
+//                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
+//        case _ as PlaylistResponse.Type:
+//            return Just(PlaylistResponse(results: PlaylistResult(suggestions: [PlaylistSuggestion(content: PlaylistContent(attributes: PlaylistAttribute(artwork: PlaylistArtwork(url: ""), name: "asdvasdv")))])))
+//                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
+//        default :
+//            return Just(HintResponse(results: HintResult(suggestions: [HintSuggestion(displayTerm: "아에이오우")])))
+//                .tryMap{$0 as! Thema}.eraseToAnyPublisher()
+//        }
+//    }
+//    
+//    
+//}
 

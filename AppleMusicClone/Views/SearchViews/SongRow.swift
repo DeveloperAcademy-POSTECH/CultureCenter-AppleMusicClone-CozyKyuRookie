@@ -43,11 +43,6 @@ struct SongRow: View {
     }
 }
 
-
-
-
-
-
 extension SongRow {
     private func toggleSong(url: URL, isDifferentSong: Bool) -> URL {
         if isDifferentSong {
