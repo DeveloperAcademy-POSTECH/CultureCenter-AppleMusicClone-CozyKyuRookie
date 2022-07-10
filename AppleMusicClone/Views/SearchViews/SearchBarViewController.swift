@@ -1,73 +1,84 @@
-
 import SwiftUI
 
-class SearchBarViewController: UIViewController {
-    var searchController = UISearchController()
-    
-    init(searchController: UISearchController) {
-        self.searchController = searchController
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        super.didMove(toParent: parent)
-        guard let parent = parent, parent.navigationItem.searchController == nil else  {return}
-        parent.navigationItem.searchController = searchController
-    }
-}
-
 struct SearchBar<Content: View>: UIViewControllerRepresentable {
-
-    typealias UIViewControllerType = SearchBarViewController
     
     var placeholder: String = "아티스트, 노래, 가사 등"
+    var searchScopeTitle: [String] = ["Apple music", "보관함"]
+    
+    @Binding var isSearching: Bool
+    @Binding var selectedScope: Int
     @Binding var text: String
     
     @ViewBuilder var content: () -> Content
-
+    
+    //MARK: 부모뷰의 data 변화를 감지하기위해 사용해야하는 클래스
     class Coordinator: NSObject, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
-
+        
+        @Binding var selectedScope: Int
         @Binding var text: String
-        init(text: Binding<String>) {
+        
+        init(text: Binding<String>, selectedScope: Binding<Int>) {
             _text = text
+            _selectedScope = selectedScope
         }
-
+        
         func updateSearchResults(for searchController: UISearchController) {
-
-            if( self.text != searchController.searchBar.text ) {
+            selectedScope = searchController.searchBar.selectedScopeButtonIndex
+            
+            if(self.text != searchController.searchBar.text ) {
                 self.text = searchController.searchBar.text ?? ""
             }
         }
-
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        }
-
-        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        }
-
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        }
     }
-
+    
     func makeCoordinator() -> SearchBar.Coordinator {
-        return Coordinator(text: $text)
+        return Coordinator(text: $text, selectedScope: $selectedScope)
     }
-
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<SearchBar>) -> UIViewControllerType {
-
+        
         let searchController =  UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = context.coordinator
-        searchController.searchBar.scopeButtonTitles = ["Apple music", "보관함"]
+        searchController.searchBar.scopeButtonTitles = self.searchScopeTitle
         searchController.searchBar.placeholder = placeholder
-        searchController.obscuresBackgroundDuringPresentation = false
-        return SearchBarViewController(searchController: searchController)
+        
+        return SearchBarViewController(searchController: searchController, isSearching: $isSearching)
     }
+    
+    func updateUIViewController(_ uiViewController: SearchBarViewController, context: UIViewControllerRepresentableContext<SearchBar>) {
+    }
+    
+    //MARK: UIkit으로 검색창을 만드는 클래스
+    class SearchBarViewController: UIViewController, UISearchControllerDelegate {
+        
+        var searchController: UISearchController
+        @Binding var isSearching: Bool
+        
+        init(searchController: UISearchController, isSearching: Binding<Bool>) {
+            self.searchController = searchController
+            _isSearching = isSearching
+            super.init(nibName: nil, bundle: nil)
+            self.searchController.delegate = self
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        func didDismissSearchController(_ searchController: UISearchController) {
+            isSearching.toggle()
+        }
+        
+        func didPresentSearchController(_ searchController: UISearchController) {
+            isSearching.toggle()
+        }
 
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<SearchBar>) {
+        //MARK: UIkit에서 검색창은 네비게이션바에 위치하는 아이템으로 부모뷰의 네비게이션에 UIkit 서치바를 삽입해주는 코드
+        override func didMove(toParent parent: UIViewController?) {
+            super.didMove(toParent: parent)
+            guard let parent = parent, parent.navigationItem.searchController == nil else  {return}
+            parent.navigationItem.searchController = searchController
+        }
     }
 }
 

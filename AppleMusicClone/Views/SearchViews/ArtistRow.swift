@@ -27,6 +27,7 @@ struct ArtistRow: View {
                     Text(searchViewModel.artists[index].inform)
                     Spacer()
                 }
+                Divider()
             }
         }
         
