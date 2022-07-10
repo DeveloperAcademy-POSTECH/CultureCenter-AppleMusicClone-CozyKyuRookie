@@ -20,7 +20,7 @@ class SearchViewModel: ObservableObject {
     
     @Published var hints: [commonViewModel<HintSuggestion>] = []
     @Published var playlists: [commonViewModel<PlaylistSuggestion>] = []
-    @Published var artists: [commonViewModel<ArtistSuggestion>] = []
+    @Published var artists: [commonViewModel<ArtistSuggestion>] = [commonViewModel(suggestion: ArtistSuggestion(content: ArtistContent(attributes: ArtistAttributes(name: "asdvasd", artwork: ArtistArtwork(url: "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/41/04/45/410445f8-f70e-2d89-c26a-c3806d8e3f7c/mzl.uvpocmik.jpg/100x100bb.jpg")))))]
     @Published var songs: [commonViewModel<SongSuggestion>] = []
     
     func fetch(_ text: String) {

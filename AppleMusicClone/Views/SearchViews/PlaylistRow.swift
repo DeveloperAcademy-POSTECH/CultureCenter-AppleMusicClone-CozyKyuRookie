@@ -26,6 +26,8 @@ struct PlaylistRow: View {
                     .frame(width: 50, height: 50)
                     Text(searchViewModel.playlists[index].inform)
                     Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.yaleGray)
                 }
             }
         }

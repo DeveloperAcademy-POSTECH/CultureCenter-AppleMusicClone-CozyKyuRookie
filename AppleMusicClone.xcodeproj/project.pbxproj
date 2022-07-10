@@ -27,6 +27,7 @@
 		7949F5E92876F98B00AAEFD4 /* PlaylistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949F5E82876F98B00AAEFD4 /* PlaylistRow.swift */; };
 		7949F5EB2876FAD000AAEFD4 /* HintRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949F5EA2876FAD000AAEFD4 /* HintRow.swift */; };
 		7949F5ED2877214300AAEFD4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949F5EC2877214300AAEFD4 /* Secret.swift */; };
+		79D2F722287AE6BC00F4DC5F /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2F721287AE6BC00F4DC5F /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		7949F5E82876F98B00AAEFD4 /* PlaylistRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRow.swift; sourceTree = "<group>"; };
 		7949F5EA2876FAD000AAEFD4 /* HintRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintRow.swift; sourceTree = "<group>"; };
 		7949F5EC2877214300AAEFD4 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		79D2F721287AE6BC00F4DC5F /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7933983528732CEA007584EC /* View+Extension.swift */,
+				79D2F721287AE6BC00F4DC5F /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				7949F5E92876F98B00AAEFD4 /* PlaylistRow.swift in Sources */,
 				7949F5ED2877214300AAEFD4 /* Secret.swift in Sources */,
 				790FC5BA2874184000B26D20 /* ArtistResponse.swift in Sources */,
+				79D2F722287AE6BC00F4DC5F /* Color+Extension.swift in Sources */,
 				790FC5B82874184000B26D20 /* PlaylistResponse.swift in Sources */,
 				7949F5EB2876FAD000AAEFD4 /* HintRow.swift in Sources */,
 				790FC5C02874745F00B26D20 /* SearchViewModel.swift in Sources */,

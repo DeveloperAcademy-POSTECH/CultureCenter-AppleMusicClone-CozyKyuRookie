@@ -28,9 +28,16 @@ struct ArtistRow: View {
                     .frame(width: 50, height: 50)
                     Text(searchViewModel.artists[index].inform)
                     Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.yaleGray)
                 }
             }
         }
     }
 }
 
+struct ArtistRow_Previews: PreviewProvider {
+    static var previews: some View {
+        ArtistRow(searchViewModel: SearchViewModel())
+    }
+}

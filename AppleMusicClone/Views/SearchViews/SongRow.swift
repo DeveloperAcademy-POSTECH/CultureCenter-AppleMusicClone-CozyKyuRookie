@@ -35,6 +35,8 @@ struct SongRow: View {
                         Text(searchViewModel.songs[index].inform)
                             .foregroundColor(.primary)
                         Spacer()
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(.black)
                     }
                 }
             }
