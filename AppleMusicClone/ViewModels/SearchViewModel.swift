@@ -20,7 +20,7 @@ class SearchViewModel: ObservableObject {
     
     @Published var hints: [commonViewModel<HintSuggestion>] = []
     @Published var playlists: [commonViewModel<PlaylistSuggestion>] = []
-    @Published var artists: [commonViewModel<ArtistSuggestion>] = [commonViewModel(suggestion: ArtistSuggestion(content: ArtistContent(attributes: ArtistAttributes(name: "asdvasd", artwork: ArtistArtwork(url: "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/41/04/45/410445f8-f70e-2d89-c26a-c3806d8e3f7c/mzl.uvpocmik.jpg/100x100bb.jpg")))))]
+    @Published var artists: [commonViewModel<ArtistSuggestion>] = []
     @Published var songs: [commonViewModel<SongSuggestion>] = []
     
     func fetch(_ text: String) {
@@ -74,6 +74,7 @@ struct commonViewModel<Thema> {
     let inform: String
     var imageUrl: URL?
     var songUrl: URL?
+    var type: String?
     
     init(suggestion: Thema) {
         self.suggestion = suggestion
@@ -84,13 +85,22 @@ struct commonViewModel<Thema> {
             inform = songs.content.attributes.name
             imageUrl = getImageUrl(urlString: songs.content.attributes.artwork.url)
             guard let url = songs.content.attributes.previews.first?.url else { return }
-            songUrl = URL(string: url)            
+            songUrl = URL(string: url)
+            type = "노래"
+            if let artistName = songs.content.attributes.artistName {
+                type = "노래" + "•" + artistName
+            }
         case let artist as ArtistSuggestion:
             inform = artist.content.attributes.name
-            imageUrl = getImageUrl(urlString: artist.content.attributes.artwork.url)            
+            imageUrl = getImageUrl(urlString: artist.content.attributes.artwork.url)
+            type = "아티스트"
         case let playlist as PlaylistSuggestion:
             inform = playlist.content.attributes.name
             imageUrl = getImageUrl(urlString: playlist.content.attributes.artwork.url)
+            type = "플레이리스트"
+            if let curatorName = playlist.content.attributes.curatorName {
+                self.type = "플레이리스트" + "•" + curatorName
+            }
         default:
             inform = ""
         }

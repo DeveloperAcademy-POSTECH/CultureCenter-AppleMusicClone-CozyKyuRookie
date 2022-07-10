@@ -32,8 +32,12 @@ struct SongRow: View {
                             RoundedRectangle(cornerRadius: 5)
                         }
                         .frame(width: 50, height: 50)
-                        Text(searchViewModel.songs[index].inform)
-                            .foregroundColor(.primary)
+                        VStack(alignment: .leading) {
+                            Text(searchViewModel.songs[index].inform)
+                                .foregroundColor(.black)
+                            Text(searchViewModel.songs[index].type ?? "")
+                                .foregroundColor(.yaleGray)
+                        }
                         Spacer()
                         Image(systemName: "ellipsis")
                             .foregroundColor(.black)

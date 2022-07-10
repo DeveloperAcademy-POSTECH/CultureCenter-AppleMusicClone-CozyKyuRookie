@@ -24,7 +24,11 @@ struct PlaylistRow: View {
                         RoundedRectangle(cornerRadius: 5)
                     }
                     .frame(width: 50, height: 50)
-                    Text(searchViewModel.playlists[index].inform)
+                    VStack(alignment: .leading) {
+                        Text(searchViewModel.playlists[index].inform)
+                        Text(searchViewModel.playlists[index].type ?? "")
+                        .foregroundColor(.yaleGray)
+                    }
                     Spacer()
                     Image(systemName: "chevron.right")
                         .foregroundColor(.yaleGray)

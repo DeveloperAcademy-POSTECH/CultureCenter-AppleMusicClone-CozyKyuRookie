@@ -14,7 +14,7 @@ struct SongResponse: Codable {
 
 extension SongResponse {
     static func placeholder() -> SongResponse {
-        return SongResponse(results: SongResult(suggestions: [SongSuggestion(content: SongContent(attributes: SongAttributes(previews: [SongPreview(url: "")], artwork: SongArtWork(url: ""), name: "")))]))
+        return SongResponse(results: SongResult(suggestions: [SongSuggestion(content: SongContent(attributes: SongAttributes(previews: [SongPreview(url: "")], artwork: SongArtWork(url: ""), name: "", artistName: "")))]))
     }
 }
 
@@ -38,6 +38,7 @@ struct SongAttributes: Codable {
     let previews: [SongPreview]
     let artwork: SongArtWork
     let name: String
+    let artistName: String?
 }
 
 // MARK: - Preview

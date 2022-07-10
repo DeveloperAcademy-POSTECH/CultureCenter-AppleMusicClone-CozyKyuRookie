@@ -14,7 +14,7 @@ struct PlaylistResponse: Codable {
 
 extension PlaylistResponse {
     static func placeholder() -> PlaylistResponse {
-        PlaylistResponse(results: PlaylistResult(suggestions: [PlaylistSuggestion(content: PlaylistContent(attributes: PlaylistAttribute(artwork: PlaylistArtwork(url: ""), name: "asdads")))]))
+        PlaylistResponse(results: PlaylistResult(suggestions: [PlaylistSuggestion(content: PlaylistContent(attributes: PlaylistAttribute(artwork: PlaylistArtwork(url: ""), name: "asdads", curatorName: "dd")))]))
     }
 }
 
@@ -37,6 +37,7 @@ struct PlaylistContent: Codable {
 struct PlaylistAttribute: Codable {
     let artwork: PlaylistArtwork
     let name: String
+    let curatorName: String?
 }
 
 // MARK: - Artwork
