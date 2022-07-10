@@ -1,15 +1,17 @@
+
+//  Created by Rookie on 2022/07/05.
+//
+
 import SwiftUI
 
-struct SearchBar<Content: View>: UIViewControllerRepresentable {
+struct SearchBar: UIViewControllerRepresentable {
     
     var placeholder: String = "아티스트, 노래, 가사 등"
-    var searchScopeTitle: [String] = ["Apple music", "보관함"]
+    var searchScopeTitles: [String] = ["Apple music", "보관함"]
     
     @Binding var isSearching: Bool
     @Binding var selectedScope: Int
     @Binding var text: String
-    
-    @ViewBuilder var content: () -> Content
     
     //MARK: 부모뷰의 data 변화를 감지하기위해 사용해야하는 클래스
     class Coordinator: NSObject, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
@@ -39,7 +41,7 @@ struct SearchBar<Content: View>: UIViewControllerRepresentable {
         
         let searchController =  UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = context.coordinator
-        searchController.searchBar.scopeButtonTitles = self.searchScopeTitle
+        searchController.searchBar.scopeButtonTitles = self.searchScopeTitles
         searchController.searchBar.placeholder = placeholder
         
         return SearchBarViewController(searchController: searchController, isSearching: $isSearching)
