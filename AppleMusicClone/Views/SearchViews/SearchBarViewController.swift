@@ -6,8 +6,8 @@ import SwiftUI
 
 struct SearchBar: UIViewControllerRepresentable {
     
-    var placeholder: String = "아티스트, 노래, 가사 등"
-    var searchScopeTitles: [String] = ["Apple music", "보관함"]
+    private let placeholder: String = "아티스트, 노래, 가사 등"
+    private let searchScopeTitles: [String] = ["Apple music", "보관함"]
     
     @Binding var isSearching: Bool
     @Binding var selectedScope: Int

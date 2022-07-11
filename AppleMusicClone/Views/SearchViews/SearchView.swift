@@ -18,10 +18,9 @@ struct SearchView: View {
     var body: some View {
         
         NavigationView {
-            VStack(spacing: -25) {
+            VStack {
                 SearchBar(isSearching: $isSearching, selectedScope: $selectedScopeIndex, text: $searchText)
                     .frame(height: 0)
-                    .padding()
                     .onChange(of: searchText) { _ in
                         searchViewModel.fetch(searchText)
                     }
@@ -29,22 +28,22 @@ struct SearchView: View {
                 ScrollView(.vertical) {
                     if isSearching == true {
                         if selectedScopeIndex == 0 {
-                            if searchText.count == 0 {
+                            if searchText.isEmpty == true {
                                 Text("최근 검색한 항목")
                                     .padding(.leading, 20)
                                     .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-                            } else if searchText.count > 0 {
+                            } else {
                                 HintRow(searchViewModel: searchViewModel)
                                 SongRow(searchViewModel: searchViewModel)
                                 PlaylistRow(searchViewModel: searchViewModel)
                                 ArtistRow(searchViewModel: searchViewModel)
                             }
                         } else if selectedScopeIndex == 1 {
-                            if searchText.count == 0 {
+                            if searchText.isEmpty == true {
                                 Text("최근 검색한 항목")
                                     .padding(.leading, 20)
                                     .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-                            } else if searchText.count > 0 {
+                            } else {
                                 Text("유저의 보관함 리스트")
                             }
                         }

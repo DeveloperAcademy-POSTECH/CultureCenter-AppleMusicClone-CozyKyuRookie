@@ -11,8 +11,7 @@ import SwiftUI
 struct AppleMusicCloneApp: App {
     var body: some Scene {
         WindowGroup {
-            SearchView()
-//            MainView()
+            MainView()
         }
     }
 }
