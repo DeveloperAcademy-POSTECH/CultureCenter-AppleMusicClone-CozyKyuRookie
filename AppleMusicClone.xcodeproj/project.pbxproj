@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				790FC5BB2874184000B26D20 /* HintResponse.swift in Sources */,
-				A968EFF828799B6C004BEFE6 /* MainView.swift in Sources */,
+				790FC5C72875AD0700B26D20 /* MainView.swift in Sources */,
 				7949F5E52876F96800AAEFD4 /* SongRow.swift in Sources */,
 				7933983828732D92007584EC /* Constants.swift in Sources */,
 				A968EFFA28799CD7004BEFE6 /* SearchBarViewController.swift in Sources */,
