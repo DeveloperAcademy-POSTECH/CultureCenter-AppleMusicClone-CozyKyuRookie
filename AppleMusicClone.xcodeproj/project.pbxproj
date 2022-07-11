@@ -26,7 +26,7 @@
 		7949F5E92876F98B00AAEFD4 /* PlaylistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949F5E82876F98B00AAEFD4 /* PlaylistRow.swift */; };
 		7949F5EB2876FAD000AAEFD4 /* HintRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949F5EA2876FAD000AAEFD4 /* HintRow.swift */; };
 		7949F5ED2877214300AAEFD4 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949F5EC2877214300AAEFD4 /* Secret.swift */; };
-		A968EFF828799B6C004BEFE6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A968EFF728799B6C004BEFE6 /* MainView.swift */; };
+		790FC5C82875AD0700B26D20 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC5C72875AD0700B26D20 /* MainView.swift */; };
 		A968EFFA28799CD7004BEFE6 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A968EFF928799CD7004BEFE6 /* SearchBarViewController.swift */; };
 /* End PBXBuildFile section */
 
