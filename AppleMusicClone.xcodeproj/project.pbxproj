@@ -124,7 +124,7 @@
 		7933982C287326AB007584EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A968EFF728799B6C004BEFE6 /* MainView.swift */,
+				790FC5C72875AD0700B26D20 /* MainView.swift */,
 				790FC5BE2874185000B26D20 /* SearchViews */,
 			);
 			path = Views;
