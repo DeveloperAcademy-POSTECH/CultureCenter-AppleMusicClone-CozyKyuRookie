@@ -11,7 +11,7 @@ import Combine
 struct SearchView: View {
     
     @State private var isSearching: Bool = false
-    @State private var selectedScopeIndex : Int = 0
+    @State private var selectedScopeIndex : Int = SearchCategory.appleMusic.rawValue
     @State private var searchText: String = ""
     @StateObject private var searchViewModel: SearchViewModel = SearchViewModel()
     
@@ -27,7 +27,7 @@ struct SearchView: View {
                 
                 ScrollView(.vertical) {
                     if isSearching == true {
-                        if selectedScopeIndex == 0 {
+                        if selectedScopeIndex == SearchCategory.appleMusic.rawValue {
                             if searchText.isEmpty == true {
                                 Text("최근 검색한 항목")
                                     .padding(.leading, 20)
@@ -38,7 +38,7 @@ struct SearchView: View {
                                 PlaylistRow(searchViewModel: searchViewModel)
                                 ArtistRow(searchViewModel: searchViewModel)
                             }
-                        } else if selectedScopeIndex == 1 {
+                        } else if selectedScopeIndex == SearchCategory.store.rawValue {
                             if searchText.isEmpty == true {
                                 Text("최근 검색한 항목")
                                     .padding(.leading, 20)
@@ -62,12 +62,4 @@ struct SearchView_Previews: PreviewProvider {
         SearchView()
     }
 }
-
-extension SearchView {
-    enum searchCategory: String, CaseIterable {
-        case appleMusic = "Apple Music"
-        case store = "보관함"
-    }
-}
-
 

@@ -7,7 +7,7 @@ import SwiftUI
 struct SearchBar: UIViewControllerRepresentable {
     
     private let placeholder: String = "아티스트, 노래, 가사 등"
-    private let searchScopeTitles: [String] = ["Apple music", "보관함"]
+    private let searchScopeTitles: [String] = [SearchScopeBar.appleMusicScopeBarTitle.rawValue, SearchScopeBar.storeScopeBarTitle.rawValue]
     
     @Binding var isSearching: Bool
     @Binding var selectedScope: Int
@@ -84,3 +84,12 @@ struct SearchBar: UIViewControllerRepresentable {
     }
 }
 
+enum SearchCategory: Int {
+    case appleMusic = 0
+    case store = 1
+}
+
+enum SearchScopeBar: String {
+    case appleMusicScopeBarTitle = "Apple Music"
+    case storeScopeBarTitle = "보관함"
+}
