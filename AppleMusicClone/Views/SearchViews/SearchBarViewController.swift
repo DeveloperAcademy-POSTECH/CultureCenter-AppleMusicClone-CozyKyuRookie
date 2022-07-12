@@ -7,26 +7,29 @@ import SwiftUI
 struct SearchBar: UIViewControllerRepresentable {
     
     private let placeholder: String = "아티스트, 노래, 가사 등"
-    private let searchScopeTitles: [String] = [SearchScopeBar.appleMusicScopeBarTitle.rawValue, SearchScopeBar.storeScopeBarTitle.rawValue]
+    private let searchScopeTitles: [String] = [SearchCategory.appleMusic.rawValue, SearchCategory.store.rawValue]
     
     @Binding var isSearching: Bool
-    @Binding var selectedScope: Int
+    @Binding var selectedScope: SearchCategory
     @Binding var text: String
     
     //MARK: 부모뷰의 data 변화를 감지하기위해 사용해야하는 클래스
     class Coordinator: NSObject, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
         
-        @Binding var selectedScope: Int
+        @Binding var selectedScope: SearchCategory
         @Binding var text: String
         
-        init(text: Binding<String>, selectedScope: Binding<Int>) {
+        init(text: Binding<String>, selectedScope: Binding<SearchCategory>) {
             _text = text
             _selectedScope = selectedScope
         }
         
         func updateSearchResults(for searchController: UISearchController) {
-            selectedScope = searchController.searchBar.selectedScopeButtonIndex
-            
+            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                selectedScope = SearchCategory.appleMusic
+            } else {
+                selectedScope = SearchCategory.store
+            }
             if(self.text != searchController.searchBar.text ) {
                 self.text = searchController.searchBar.text ?? ""
             }
@@ -84,12 +87,17 @@ struct SearchBar: UIViewControllerRepresentable {
     }
 }
 
-enum SearchCategory: Int {
-    case appleMusic = 0
-    case store = 1
-}
+//enum SearchCategory: Int {
+//    case appleMusic = 0
+//    case store = 1
+//}
+//
+//enum SearchScopeBar: String {
+//    case appleMusicScopeBarTitle = "Apple Music"
+//    case storeScopeBarTitle = "보관함"
+//}
 
-enum SearchScopeBar: String {
-    case appleMusicScopeBarTitle = "Apple Music"
-    case storeScopeBarTitle = "보관함"
+enum SearchCategory: String {
+    case appleMusic = "Apple Music"
+    case store = "보관함"
 }
