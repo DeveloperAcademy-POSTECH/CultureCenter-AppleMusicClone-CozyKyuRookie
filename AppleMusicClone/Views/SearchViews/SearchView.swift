@@ -10,7 +10,7 @@ import Combine
 
 struct SearchView: View {
     
-    @State private var location = ""
+    @State private var searchText = ""
     @State private var category: searchCategory = .appleMusic
     @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     
@@ -18,16 +18,16 @@ struct SearchView: View {
         
         VStack(spacing: 10) {
             ///TODO: 커스텀 텍스트 필드
-            TextField("Your Location", text: $location)
+            TextField("Your Location", text: $searchText)
                 .padding()
-                .onChange(of: location) { _ in
-                    searchViewModel.fetch(location)
+                .onChange(of: searchText) { _ in
+                    searchViewModel.fetch(searchText)
                 }
             
             searchPicker()
             
             ScrollView(.vertical) {
-                HintRow(searchViewModel: searchViewModel)
+                HintRow(searchViewModel: searchViewModel, searchText: $searchText)
                 SongRow(searchViewModel: searchViewModel)
                 PlaylistRow(searchViewModel: searchViewModel)
                 ArtistRow(searchViewModel: searchViewModel)
