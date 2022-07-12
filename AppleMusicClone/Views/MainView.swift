@@ -30,7 +30,7 @@ struct MainView: View {
                     Text("보관함")
                 }
 
-            Text("4")
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("검색")

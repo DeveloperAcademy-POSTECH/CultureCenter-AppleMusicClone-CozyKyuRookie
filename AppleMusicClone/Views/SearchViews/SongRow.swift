@@ -43,6 +43,7 @@ struct SongRow: View {
                             .foregroundColor(.black)
                     }
                 }
+                Divider()
             }
         }
     }

@@ -33,6 +33,7 @@ struct PlaylistRow: View {
                     Image(systemName: "chevron.right")
                         .foregroundColor(.yaleGray)
                 }
+                Divider()
             }
         }
         

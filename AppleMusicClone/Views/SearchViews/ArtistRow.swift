@@ -36,6 +36,7 @@ struct ArtistRow: View {
                     Image(systemName: "chevron.right")
                         .foregroundColor(.yaleGray)
                 }
+                Divider()
             }
         }
     }
