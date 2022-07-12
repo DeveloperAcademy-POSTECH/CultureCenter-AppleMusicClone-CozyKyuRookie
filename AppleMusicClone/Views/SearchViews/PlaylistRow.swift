@@ -27,6 +27,7 @@ struct PlaylistRow: View {
                     Text(searchViewModel.playlists[index].inform)
                     Spacer()
                 }
+                Divider()
             }
         }
         

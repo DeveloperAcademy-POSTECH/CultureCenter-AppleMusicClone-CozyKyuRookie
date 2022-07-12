@@ -10,31 +10,50 @@ import Combine
 
 struct SearchView: View {
     
-    @State private var location = ""
-    @State private var category: searchCategory = .appleMusic
-    @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
+    @State private var isSearching: Bool = false
+    @State private var selectedScopeIndex : Int = SearchCategory.appleMusic.rawValue
+    @State private var searchText: String = ""
+    @StateObject private var searchViewModel: SearchViewModel = SearchViewModel()
     
     var body: some View {
         
-        VStack(spacing: 10) {
-            ///TODO: 커스텀 텍스트 필드
-            TextField("Your Location", text: $location)
-                .padding()
-                .onChange(of: location) { _ in
-                    searchViewModel.fetch(location)
+        NavigationView {
+            VStack {
+                SearchBar(isSearching: $isSearching, selectedScope: $selectedScopeIndex, text: $searchText)
+                    .frame(height: 0)
+                    .onChange(of: searchText) { _ in
+                        searchViewModel.fetch(searchText)
+                    }
+                
+                ScrollView(.vertical) {
+                    if isSearching == true {
+                        if selectedScopeIndex == SearchCategory.appleMusic.rawValue {
+                            if searchText.isEmpty == true {
+                                Text("최근 검색한 항목")
+                                    .padding(.leading, 20)
+                                    .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                            } else {
+                                HintRow(searchViewModel: searchViewModel)
+                                SongRow(searchViewModel: searchViewModel)
+                                PlaylistRow(searchViewModel: searchViewModel)
+                                ArtistRow(searchViewModel: searchViewModel)
+                            }
+                        } else if selectedScopeIndex == SearchCategory.store.rawValue {
+                            if searchText.isEmpty == true {
+                                Text("최근 검색한 항목")
+                                    .padding(.leading, 20)
+                                    .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                            } else {
+                                Text("유저의 보관함 리스트")
+                            }
+                        }
+                    }
                 }
-            
-            searchPicker()
-            
-            ScrollView(.vertical) {
-                HintRow(searchViewModel: searchViewModel)
-                SongRow(searchViewModel: searchViewModel)
-                PlaylistRow(searchViewModel: searchViewModel)
-                ArtistRow(searchViewModel: searchViewModel)
+                Spacer()
             }
-            Spacer()
+            .padding(.horizontal, 20)
+            .navigationTitle("검색")
         }
-        .padding(.horizontal, 20)
     }
 }
 
@@ -43,26 +62,4 @@ struct SearchView_Previews: PreviewProvider {
         SearchView()
     }
 }
-
-extension SearchView {
-    
-    private func searchPicker() -> some View {
-        
-        Picker("category", selection: $category) {
-            ForEach(searchCategory.allCases, id: \.self) { category in
-                let categoryString = category.rawValue
-                Text(categoryString).tag(categoryString)
-            }
-        }
-        .pickerStyle(.segmented)
-    }
-}
-
-extension SearchView {
-    enum searchCategory: String, CaseIterable {
-        case appleMusic = "Apple Music"
-        case store = "보관함"
-    }
-}
-
 
