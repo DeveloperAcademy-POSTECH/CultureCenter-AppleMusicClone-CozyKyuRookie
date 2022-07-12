@@ -24,6 +24,7 @@ struct PlaylistRow: View {
                         RoundedRectangle(cornerRadius: 5)
                     }
                     .frame(width: 50, height: 50)
+                    .foregroundColor(.black)
                     VStack(alignment: .leading) {
                         Text(searchViewModel.playlists[index].inform)
                         Text(searchViewModel.playlists[index].type ?? "")

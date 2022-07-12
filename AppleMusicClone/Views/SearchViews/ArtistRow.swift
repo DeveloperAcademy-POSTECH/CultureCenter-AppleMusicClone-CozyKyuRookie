@@ -26,6 +26,7 @@ struct ArtistRow: View {
                         RoundedRectangle(cornerRadius: 5)
                     }
                     .frame(width: 50, height: 50)
+                    .foregroundColor(.black)
                     VStack(alignment: .leading) {
                         Text(searchViewModel.artists[index].inform)
                         Text(searchViewModel.artists[index].type ?? "")

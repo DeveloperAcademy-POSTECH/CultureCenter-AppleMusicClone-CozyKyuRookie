@@ -25,7 +25,7 @@ struct SearchView: View {
                         searchViewModel.fetch(searchText)
                     }
                 
-                ScrollView(.vertical) {
+                ScrollView(.vertical, showsIndicators: false) {
                     if isSearching == true {
                         if selectedScopeIndex == SearchCategory.appleMusic.rawValue {
                             if searchText.isEmpty == true {

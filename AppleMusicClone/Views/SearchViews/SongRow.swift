@@ -32,6 +32,7 @@ struct SongRow: View {
                             RoundedRectangle(cornerRadius: 5)
                         }
                         .frame(width: 50, height: 50)
+                        .foregroundColor(.black)
                         VStack(alignment: .leading) {
                             Text(searchViewModel.songs[index].inform)
                                 .foregroundColor(.black)
