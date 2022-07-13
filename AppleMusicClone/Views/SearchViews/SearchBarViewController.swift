@@ -48,6 +48,7 @@ struct SearchBar: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: SearchBarViewController, context: UIViewControllerRepresentableContext<SearchBar>) {
+        uiViewController.searchController.searchBar.text = text
     }
     
     //MARK: UIkit으로 검색창을 만드는 클래스
