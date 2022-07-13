@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct HintRow: View {
-    
     @ObservedObject var searchViewModel: SearchViewModel
-    
+
     var body: some View {
-        
         LazyVStack {
             ForEach(searchViewModel.hints.indices, id: \.self) { index in
                 VStack(alignment: .leading, spacing: 15) {
@@ -25,8 +23,5 @@ struct HintRow: View {
                 }
             }
         }
-        
     }
 }
-
-

@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct ArtistRow: View {
-    
     @ObservedObject var searchViewModel: SearchViewModel
-    
+
     var body: some View {
-        
         LazyVStack {
             ForEach(searchViewModel.artists.indices, id: \.self) { index in
                 HStack {
-                    AsyncImage(url: searchViewModel.artists[index].imageUrl) { image in
+                    AsyncImage(url: searchViewModel.artists[index].imageURL) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -30,7 +28,5 @@ struct ArtistRow: View {
                 Divider()
             }
         }
-        
     }
 }
-

@@ -5,18 +5,16 @@
 //  Created by Hankyu Lee on 2022/07/05.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct SearchView: View {
-    
     @State private var isSearching: Bool = false
     @State private var selectedScope: SearchCategory = .appleMusic
     @State private var searchText: String = ""
-    @StateObject private var searchViewModel: SearchViewModel = SearchViewModel()
-    
+    @StateObject private var searchViewModel: SearchViewModel = .init()
+
     var body: some View {
-        
         NavigationView {
             VStack {
                 SearchBar(isSearching: $isSearching, selectedScope: $selectedScope, text: $searchText)
@@ -24,25 +22,25 @@ struct SearchView: View {
                     .onChange(of: searchText) { _ in
                         searchViewModel.fetch(searchText)
                     }
-                
+
                 ScrollView(.vertical) {
                     if isSearching == true {
                         switch selectedScope {
                         case .appleMusic where searchText.isEmpty:
-                                Text("최근 검색한 항목")
-                                    .padding(.leading, 20)
-                                    .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                            Text("최근 검색한 항목")
+                                .padding(.leading, 20)
+                                .frame(width: UIScreen.main.bounds.width, alignment: .leading)
                         case .appleMusic:
-                                HintRow(searchViewModel: searchViewModel)
-                                SongRow(searchViewModel: searchViewModel)
-                                PlaylistRow(searchViewModel: searchViewModel)
-                                ArtistRow(searchViewModel: searchViewModel)
+                            HintRow(searchViewModel: searchViewModel)
+                            SongRow(searchViewModel: searchViewModel)
+                            PlaylistRow(searchViewModel: searchViewModel)
+                            ArtistRow(searchViewModel: searchViewModel)
                         case .store where searchText.isEmpty:
-                                Text("최근 검색한 항목")
-                                    .padding(.leading, 20)
-                                    .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                            Text("최근 검색한 항목")
+                                .padding(.leading, 20)
+                                .frame(width: UIScreen.main.bounds.width, alignment: .leading)
                         case .store:
-                                Text("유저의 보관함 리스트")
+                            Text("유저의 보관함 리스트")
                         }
                     }
                 }
@@ -59,4 +57,3 @@ struct SearchView_Previews: PreviewProvider {
         SearchView()
     }
 }
-
