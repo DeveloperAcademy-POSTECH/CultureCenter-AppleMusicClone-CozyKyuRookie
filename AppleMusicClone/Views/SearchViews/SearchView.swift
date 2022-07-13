@@ -26,6 +26,7 @@ struct SearchView: View {
                     }
                 
                 ScrollView(.vertical, showsIndicators: false) {
+                    
                     if isSearching == true {
                         if selectedScopeIndex == SearchCategory.appleMusic.rawValue {
                             if searchText.isEmpty == true {
@@ -62,5 +63,3 @@ struct SearchView_Previews: PreviewProvider {
         SearchView()
     }
 }
-
-

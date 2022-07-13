@@ -37,7 +37,6 @@ struct PlaylistRow: View {
                 Divider()
             }
         }
-        
     }
 }
 

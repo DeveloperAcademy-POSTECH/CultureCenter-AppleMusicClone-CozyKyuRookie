@@ -51,6 +51,7 @@ struct SearchBar: UIViewControllerRepresentable {
         uiViewController.searchController.searchBar.text = text
     }
     
+    
     //MARK: UIkit으로 검색창을 만드는 클래스
     class SearchBarViewController: UIViewController, UISearchControllerDelegate {
         
@@ -70,10 +71,18 @@ struct SearchBar: UIViewControllerRepresentable {
         
         func didDismissSearchController(_ searchController: UISearchController) {
             isSearching.toggle()
+            print("!")
         }
         
         func didPresentSearchController(_ searchController: UISearchController) {
             isSearching.toggle()
+            print("!!")
+        }
+        func willDismissSearchController(_ searchController: UISearchController) {
+            print("윌디스미스")
+        }
+        func willPresentSearchController(_ searchController: UISearchController) {
+            print("윌프레즌트")
         }
 
         //MARK: UIkit에서 검색창은 네비게이션바에 위치하는 아이템으로 부모뷰의 네비게이션에 UIkit 서치바를 삽입해주는 코드
@@ -82,6 +91,7 @@ struct SearchBar: UIViewControllerRepresentable {
             guard let parent = parent, parent.navigationItem.searchController == nil else  {return}
             parent.navigationItem.searchController = searchController
         }
+        
     }
 }
 
