@@ -87,16 +87,6 @@ struct SearchBar: UIViewControllerRepresentable {
     }
 }
 
-//enum SearchCategory: Int {
-//    case appleMusic = 0
-//    case store = 1
-//}
-//
-//enum SearchScopeBar: String {
-//    case appleMusicScopeBarTitle = "Apple Music"
-//    case storeScopeBarTitle = "보관함"
-//}
-
 enum SearchCategory: String {
     case appleMusic = "Apple Music"
     case store = "보관함"

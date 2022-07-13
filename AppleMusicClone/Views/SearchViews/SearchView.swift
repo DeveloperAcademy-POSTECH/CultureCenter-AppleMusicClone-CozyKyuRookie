@@ -32,7 +32,7 @@ struct SearchView: View {
                                 Text("최근 검색한 항목")
                                     .padding(.leading, 20)
                                     .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-                        case .appleMusic where !searchText.isEmpty:
+                        case .appleMusic:
                                 HintRow(searchViewModel: searchViewModel)
                                 SongRow(searchViewModel: searchViewModel)
                                 PlaylistRow(searchViewModel: searchViewModel)
@@ -41,10 +41,8 @@ struct SearchView: View {
                                 Text("최근 검색한 항목")
                                     .padding(.leading, 20)
                                     .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-                        case .store where !searchText.isEmpty:
+                        case .store:
                                 Text("유저의 보관함 리스트")
-                        default:
-                            EmptyView()
                         }
                     }
                 }

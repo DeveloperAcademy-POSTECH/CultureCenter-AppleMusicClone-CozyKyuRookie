@@ -11,7 +11,7 @@ import AVFoundation
 struct SongRow: View {
     
     @ObservedObject var searchViewModel: SearchViewModel
-    @State private var audioPlayer: AVPlayecr
+    @State private var audioPlayer: AVPlayer!
     @State private var isPlaying: Bool = false
     @State private var previousURL: URL?
     
