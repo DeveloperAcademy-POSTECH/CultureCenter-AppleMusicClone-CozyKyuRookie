@@ -33,8 +33,8 @@ struct SongRow: View {
                             .foregroundColor(.primary)
                         Spacer()
                     }
-                    
                 }
+                Divider()
             }
         }
     }
