@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
-
+//
+//
+//
 //  %^&^%$^&^%%&&^%$^&^%%^ 아직 보지마시오.@!@@#!!$@#%#$^%^^&^&(*(*()*&^%$#$%^&*(*$#$%^&*
+//
+//
+//
+//
+//
 struct SearchResultCategoriesView: View {
     @State private var selectedSection = SearchDetailCategory.popular
     var body: some View {
