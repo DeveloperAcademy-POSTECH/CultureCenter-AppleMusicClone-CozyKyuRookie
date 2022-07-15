@@ -5,26 +5,24 @@
 //  Created by Hankyu Lee on 2022/07/07.
 //
 
-import SwiftUI
 import AVFoundation
+import SwiftUI
 
 struct SongRow: View {
-    
     @ObservedObject var searchViewModel: SearchViewModel
     @State private var audioPlayer: AVPlayer!
     @State private var isPlaying: Bool = false
     @State private var previousURL: URL?
-    
+
     var body: some View {
-        
         LazyVStack {
             ForEach(searchViewModel.songs.indices, id: \.self) { index in
                 Button {
-                    guard let url = searchViewModel.songs[index].songUrl else { return }
+                    guard let url = searchViewModel.songs[index].songURL else { return }
                     previousURL = toggleSong(url: url, isDifferentSong: previousURL == nil || previousURL != url)
                 } label: {
                     HStack {
-                        AsyncImage(url:searchViewModel.songs[index].imageUrl) { image in
+                        AsyncImage(url: searchViewModel.songs[index].imageURL) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -48,14 +46,14 @@ extension SongRow {
         if isDifferentSong {
             let item = AVPlayerItem(url: url)
             let player = AVPlayer(playerItem: item)
-            self.audioPlayer = player
-            self.isPlaying = false
+            audioPlayer = player
+            isPlaying = false
         }
-        self.isPlaying.toggle()
-        if self.isPlaying {
-            self.audioPlayer.play()
+        isPlaying.toggle()
+        if isPlaying {
+            audioPlayer.play()
         } else {
-            self.audioPlayer.pause()
+            audioPlayer.pause()
         }
         return url
     }

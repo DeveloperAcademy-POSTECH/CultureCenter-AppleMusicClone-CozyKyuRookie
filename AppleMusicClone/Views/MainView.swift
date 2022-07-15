@@ -10,14 +10,13 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            
-            //TODO: 각 뷰 넣기
+            // TODO: 각 뷰 넣기
             Text("1")
                 .tabItem {
                     Image(systemName: "play.circle.fill")
                     Text("지금 듣기")
                 }
-            
+
             Text("2")
                 .tabItem {
                     Image(systemName: "dot.radiowaves.left.and.right")

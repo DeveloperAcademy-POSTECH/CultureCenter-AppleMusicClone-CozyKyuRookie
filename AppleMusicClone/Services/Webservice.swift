@@ -5,18 +5,18 @@
 //  Created by Hankyu Lee on 2022/07/05.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 struct Resource<T: Codable> {
     let urlString: String
 }
 
-struct WebService {
+enum WebService {
     static func searchTask<Thema>(resource: Resource<Thema>) -> AnyPublisher<Thema, Error> {
         let urlString = resource.urlString.replacingOccurrences(of: " ", with: "+")
         guard let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            //TODO: Error 처리
+            // TODO: Error 처리
             fatalError("Invalid encodedString")
         }
         guard let url = URL(string: encodedString) else {
@@ -31,5 +31,3 @@ struct WebService {
             .eraseToAnyPublisher()
     }
 }
-
-
